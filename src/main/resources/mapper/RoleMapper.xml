@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qyq.springbootshiro.mapper.RoleMapper">
+
+    <select id="findURoleById" parameterType="int" resultType="com.qyq.springbootshiro.pojo.Role">
+        SELECT r.* from role r
+        inner join user_role ur on r.id = ur.rid
+        where ur.uid = #{id};
+    </select>
+
+    <select id="findARoleById" parameterType="int" resultType="com.qyq.springbootshiro.pojo.Role">
+        SELECT r.* from role r
+        inner join admin_role ar on r.id = ar.aid
+        where ar.aid = #{id};
+    </select>
+</mapper>
